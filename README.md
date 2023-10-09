@@ -18,7 +18,7 @@ throttles retries if too many retries fail.
 ## Installation
 
 ```bash
-go get -u github.com/asimihsane/go-retry
+go get -u github.com/asimihsan/go-retry
 ```
 
 ## Usage

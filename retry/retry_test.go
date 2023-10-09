@@ -86,7 +86,11 @@ func TestRetryer_Do(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			attempts := 0
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(tt.serverResponses[attempts])
+				index := attempts
+				if attempts >= len(tt.serverResponses) {
+					index = len(tt.serverResponses) - 1
+				}
+				w.WriteHeader(tt.serverResponses[index])
 				attempts++
 			}))
 			defer server.Close()
